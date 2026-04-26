@@ -2,5 +2,7 @@ __pycache__/
 *.pyc
 .DS_Store
 .env
+.venv/
 *.tmp
 ~$*.docx
+market_briefing_*.docx

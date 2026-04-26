@@ -1,5 +1,6 @@
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 from docx import Document
 from docx.enum.section import WD_SECTION
@@ -11,9 +12,11 @@ from docx.shared import Cm, Pt, RGBColor
 
 
 BASE_DIR = Path.cwd()
-REPORT_DATE = "2026-04-26"
+NOW_KST = datetime.now(ZoneInfo("Asia/Seoul"))
+REPORT_DATE = NOW_KST.strftime("%Y-%m-%d")
 OUTPUT = BASE_DIR / f"market_briefing_{REPORT_DATE}.docx"
-CHECKED_AT = "2026-04-26 16:40 KST"
+CHECKED_AT = NOW_KST.strftime("%Y-%m-%d %H:%M KST")
+WEEKDAY_KO = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"][NOW_KST.weekday()]
 
 
 SOURCES = [
@@ -197,7 +200,7 @@ def build_report():
     title = doc.add_paragraph()
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     title.paragraph_format.space_before = Pt(42)
-    r = title.add_run("아침 증시 브리핑")
+    r = title.add_run("아침 증시 브리핑 샘플")
     r.bold = True
     r.font.size = Pt(24)
     r.font.color.rgb = RGBColor(31, 78, 121)
@@ -211,16 +214,16 @@ def build_report():
     sr.font.color.rgb = RGBColor(90, 90, 90)
 
     meta_rows = [
-        ("작성 기준일", "2026-04-26 일요일 KST"),
-        ("시장 기준", "한국: 2026-04-24 마감, 미국: 2026-04-25 KST 표기 마감"),
+        ("작성 기준일", f"{REPORT_DATE} {WEEKDAY_KO} KST"),
+        ("시장 기준", "샘플 데이터 기준: 한국 2026-04-24 마감, 미국 2026-04-25 KST 표기 마감"),
         ("확인 시각", CHECKED_AT),
-        ("주요 출처", "Investing.com, 한국경제/한경 글로벌마켓"),
+        ("주요 출처", "샘플 출처: Investing.com, 한국경제/한경 글로벌마켓"),
     ]
     add_table(doc, ["항목", "내용"], meta_rows, widths=[3.5, 12.5])
     add_callout(
         doc,
         "오늘의 한 줄 결론",
-        "정규장이 쉬는 일요일 기준 최신 마감은 AI/반도체가 위험자산 선호를 지탱하지만, 호르무즈 해협 교착과 고유가 가능성이 주초 변동성의 핵심 변수입니다.",
+        "이 문서는 2026-04-26 기준으로 작성한 샘플 레이아웃입니다. 실제 자동화는 실행 당일 최신 데이터를 다시 확인해 브리핑을 생성합니다.",
     )
 
     doc.add_page_break()

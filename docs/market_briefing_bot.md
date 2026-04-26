@@ -16,7 +16,7 @@
 
 - 상세 보고서: `market_briefing_YYYY-MM-DD.docx`
 - 저장 위치: 현재 작업 경로
-- Slack 요약: `<SLACK_CHANNEL>` 채널
+- Slack 요약: `<SLACK_CHANNEL_NAME>` 채널
 
 ## 보고서 구성
 
@@ -37,3 +37,4 @@
 - 한국 및 미국 핵심 이슈 3-5개
 - 오늘 볼 포인트
 - 생성된 DOCX 파일명
+- 기본 전송 대상: 로컬 automation 설정의 `<SLACK_CHANNEL_NAME>` / `<SLACK_CHANNEL_ID>`
