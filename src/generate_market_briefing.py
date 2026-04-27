@@ -11,10 +11,11 @@ from docx.oxml.ns import qn
 from docx.shared import Cm, Pt, RGBColor
 
 
-BASE_DIR = Path.cwd()
+BASE_DIR = Path(__file__).resolve().parent.parent
 NOW_KST = datetime.now(ZoneInfo("Asia/Seoul"))
 REPORT_DATE = NOW_KST.strftime("%Y-%m-%d")
-OUTPUT = BASE_DIR / f"market_briefing_{REPORT_DATE}.docx"
+OUTPUT_DIR = BASE_DIR / "outputs" / "morning"
+OUTPUT = OUTPUT_DIR / f"market_briefing_{REPORT_DATE}.docx"
 CHECKED_AT = NOW_KST.strftime("%Y-%m-%d %H:%M KST")
 WEEKDAY_KO = ["월요일", "화요일", "수요일", "목요일", "금요일", "토요일", "일요일"][NOW_KST.weekday()]
 
@@ -194,6 +195,7 @@ def configure_doc(doc):
 
 
 def build_report():
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     doc = Document()
     configure_doc(doc)
 

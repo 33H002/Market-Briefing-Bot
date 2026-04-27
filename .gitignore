@@ -9,3 +9,16 @@ market_briefing_*.docx
 config/watchlist_positions.yaml
 config/slack_channels.yaml
 config/slack_bot.env
+outputs/**
+!outputs/.gitkeep
+!outputs/
+!outputs/morning/
+!outputs/morning/.gitkeep
+!outputs/after_close/
+!outputs/after_close/.gitkeep
+!outputs/weekly/
+!outputs/weekly/.gitkeep
+!outputs/watchlist/
+!outputs/watchlist/.gitkeep
+!outputs/watchlist_alert/
+!outputs/watchlist_alert/.gitkeep

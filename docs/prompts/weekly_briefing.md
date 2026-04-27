@@ -11,7 +11,7 @@
 
 ## 산출물
 
-1. 현재 작업 디렉터리에 주간 상세 보고서를 저장한다. 파일명은 `weekly_market_briefing_YYYY-MM-DD.docx` 형식으로 한다.
+1. `outputs/weekly` 디렉터리에 주간 상세 보고서를 저장한다. 파일명은 `weekly_market_briefing_YYYY-MM-DD.docx` 형식으로 한다.
 2. 로컬 `config/slack_channels.yaml`의 `weekly` 채널 설정을 읽어 주간 요약본을 전송한다.
 3. Slack 발송은 사용자 계정이 아닌 별도 봇 발신 구조를 사용한다. 로컬 `config/slack_bot.env`의 `SLACK_BOT_TOKEN`을 읽고 `python3 src/send_slack_message.py --channel-key weekly --message-file <path>` 형태로 보낸다.
 4. 봇 토큰 또는 채널 설정이 없으면 사용자 계정 발송으로 대체하지 말고, 설정 누락 사실을 결과에 명시하고 종료한다.

@@ -16,6 +16,7 @@
 - `config/watchlist_positions.example.yaml`: 관심종목/보유 포지션 예시 파일
 - `config/slack_channels.example.yaml`: 브리핑 유형별 Slack 채널 매핑 예시 파일
 - `config/slack_bot.example.env`: Slack 봇 토큰 로컬 설정 예시 파일
+- `outputs/`: 브리핑 산출물 저장 디렉터리
 - `src/send_slack_message.py`: Slack 봇 발송 스크립트
 - `docs/slack_summary_sample_2026-04-26.md`: Slack 발송 샘플
 - `samples/market_briefing_2026-04-26.docx`: 2026-04-26 수동 실행 샘플 산출물
@@ -39,7 +40,7 @@ Codex automation은 브리핑 유형별로 별도 등록해 운영할 수 있습
 python3 src/generate_market_briefing.py
 ```
 
-실행하면 현재 경로에 `market_briefing_YYYY-MM-DD.docx` 형식의 샘플 보고서가 생성됩니다.
+실행하면 `outputs/morning/market_briefing_YYYY-MM-DD.docx` 형식의 샘플 보고서가 생성됩니다.
 
 ## 데이터 출처
 
@@ -80,6 +81,13 @@ python3 src/generate_market_briefing.py
 Slack 채널도 같은 방식으로 로컬 `config/slack_channels.yaml` 파일을 사용합니다. 저장소에는 `config/slack_channels.example.yaml`만 유지하고 실제 채널 정보는 커밋하지 않는 것을 권장합니다.
 
 Slack 봇 토큰은 로컬 `config/slack_bot.env` 파일에 넣어 관리합니다. 저장소에는 `config/slack_bot.example.env`만 유지하고 실제 토큰은 커밋하지 않는 것을 권장합니다.
+
+브리핑 산출물은 프로젝트 루트에 바로 떨어뜨리지 않고 `outputs/` 아래에 브리핑 유형별로 저장합니다.
+- `outputs/morning`
+- `outputs/after_close`
+- `outputs/weekly`
+- `outputs/watchlist`
+- `outputs/watchlist_alert`
 
 봇 발신 구조를 쓰려면 Slack 앱에서 최소 `chat:write` 권한이 필요합니다. 봇이 아직 채널 멤버가 아니면 채널에 초대해야 하고, 새 앱이 모든 공개 채널에 자동으로 쓰는 것은 기본 동작이 아닙니다. 참고:
 - [chat.postMessage](https://api.slack.com/methods/chat.postMessage)

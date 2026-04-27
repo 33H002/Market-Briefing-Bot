@@ -33,7 +33,7 @@
 
 ## 산출물
 
-1. 별도 `.docx` 보고서는 만들지 않는다.
+1. 별도 `.docx` 보고서는 만들지 않는다. 필요하면 Slack 발송용 임시 메시지 파일은 `outputs/watchlist_alert` 아래에 저장한다.
 2. 로컬 `config/slack_channels.yaml`에서 `watchlist_alert` 채널이 있으면 그 설정을 사용해 Slack 알림을 전송한다.
 3. `watchlist_alert` 채널이 없으면 `watchlist` 채널 설정을 사용한다.
 4. Slack 발송은 사용자 계정이 아닌 별도 봇 발신 구조를 사용한다. 로컬 `config/slack_bot.env`의 `SLACK_BOT_TOKEN`을 읽고 `python3 src/send_slack_message.py --channel-key watchlist_alert --fallback-key watchlist --message-file <path>` 형태로 보낸다.

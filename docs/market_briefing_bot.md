@@ -25,12 +25,12 @@
 
 ## 산출물
 
-- 아침 보고서: `market_briefing_YYYY-MM-DD.docx`
-- 장후 보고서: `after_close_briefing_YYYY-MM-DD.docx` 또는 `.md`
-- 주간 보고서: `weekly_market_briefing_YYYY-MM-DD.docx`
-- 관심종목 보고서: `watchlist_briefing_YYYY-MM-DD.docx`
+- 아침 보고서: `outputs/morning/market_briefing_YYYY-MM-DD.docx`
+- 장후 보고서: `outputs/after_close/after_close_briefing_YYYY-MM-DD.docx` 또는 `.md`
+- 주간 보고서: `outputs/weekly/weekly_market_briefing_YYYY-MM-DD.docx`
+- 관심종목 보고서: `outputs/watchlist/watchlist_briefing_YYYY-MM-DD.docx`
 - 관심종목 이벤트 알림: Slack 단문 알림
-- 저장 위치: 현재 작업 경로
+- 저장 위치: `outputs/` 하위 브리핑 유형별 디렉터리
 - Slack 요약 채널: 브리핑 유형별 분리
 
 ## 프롬프트 파일
