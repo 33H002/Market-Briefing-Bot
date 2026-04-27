@@ -1,6 +1,24 @@
 # Codex Automation Prompt
 
-매일 아침 한국 시간 기준으로 증시 브리핑을 작성한다. 주요 1차/보조 출처는 다음으로 삼는다: 한국증시는 Investing.com 한국 시장 페이지와 한국경제, 미국증시는 Investing.com 미국/글로벌 시장 페이지와 한국경제 글로벌. 최신 날짜의 접근 가능한 기사와 시장 데이터를 확인하고, 출처 링크와 확인 시각을 포함한다. 접근 제한, 유료벽, 차단, 지연 시세 등으로 직접 확인이 어려운 항목은 대체 출처를 섞지 말고 그 제한을 보고서에 명시하되, 가능한 범위에서 Investing.com 및 한국경제의 접근 가능한 페이지를 우선 사용한다.
+이 문서는 현재 운영 중인 `아침 브리핑`용 기본 프롬프트입니다. 다른 브리핑 유형은 아래 파일을 사용합니다.
+
+- `docs/prompts/morning_briefing.md`
+- `docs/prompts/after_close_briefing.md`
+- `docs/prompts/weekly_briefing.md`
+- `docs/prompts/watchlist_briefing.md`
+
+매일 아침 한국 시간 기준으로 증시 브리핑을 작성한다. 최신 날짜의 접근 가능한 기사와 시장 데이터를 확인하고, 출처 링크와 확인 시각을 포함한다. 접근 제한, 유료벽, 차단, 지연 시세 등으로 직접 확인이 어려운 항목은 그 제한을 보고서에 명시한다.
+
+출처 우선순위는 다음과 같이 둔다.
+- 한국 증시 시황/지수 흐름: Investing.com 한국 시장 페이지, 한국경제
+- 한국 1차 데이터/공시: KRX, DART
+- 미국 증시 시황/주요 뉴스: Investing.com 미국/글로벌 시장 페이지, 한국경제 글로벌
+- 미국 금리 기대: CME FedWatch
+- 미국 실적 일정: Nasdaq Earnings Calendar
+- 미국 1차 공시: SEC EDGAR
+- 미국 매크로/정책 일정: Federal Reserve, BLS, BEA
+
+시황 해설은 뉴스/시장 페이지를 써도 되지만, 핵심 수치·실적 일정·공시·정책 일정은 가능한 한 위 공식/1차 소스로 교차 확인한다. 한국 대형주 실적/공시는 DART를 우선 보고, 한국 시장 제도/시장 데이터는 KRX를 우선 본다. 미국 개별 기업의 실적/이벤트는 Nasdaq Earnings Calendar와 SEC EDGAR를 우선 보고, 금리 이벤트는 CME FedWatch와 Federal Reserve 일정을 함께 본다.
 
 ## 산출물
 

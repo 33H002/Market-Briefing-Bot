@@ -6,3 +6,4 @@ __pycache__/
 *.tmp
 ~$*.docx
 market_briefing_*.docx
+config/watchlist_positions.yaml

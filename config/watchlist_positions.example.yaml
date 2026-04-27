@@ -1,0 +1,19 @@
+# Copy this file to config/watchlist_positions.yaml and fill in your real holdings locally.
+# Do not commit the real file.
+
+positions:
+  - ticker: "AAPL"
+    name: "Apple"
+    market: "US"
+    shares: 10
+    avg_cost: 182.50
+    currency: "USD"
+    notes: "AI ecosystem, iPhone cycle"
+
+  - ticker: "005930"
+    name: "삼성전자"
+    market: "KR"
+    shares: 25
+    avg_cost: 78200
+    currency: "KRW"
+    notes: "HBM and foundry recovery watch"
