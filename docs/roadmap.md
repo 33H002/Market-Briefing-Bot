@@ -13,9 +13,6 @@
 - `sector_rotation_briefing`
   반도체, 조선, 방산, 전력기기, 바이오처럼 자주 보는 섹터만 골라 상대강도와 뉴스 흐름을 정리합니다.
 
-- `watchlist_event_alert`
-  관심종목의 공시, 실적 발표, 목표주가 대량 변경, 급등락이 있을 때만 짧은 Slack 알림을 보냅니다.
-
 ## 다음 단계 추천
 
 - `ETF_flow_briefing`

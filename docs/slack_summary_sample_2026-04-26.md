@@ -1,6 +1,6 @@
 # Slack Summary Sample: 2026-04-26
 
-Destination: `<SLACK_CHANNEL>`
+Destination: `morning` channel (`<SLACK_CHANNEL_NAME_MORNING>`)
 
 Message link: `<SLACK_MESSAGE_LINK>`
 

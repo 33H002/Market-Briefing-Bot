@@ -11,8 +11,10 @@
 - `docs/prompts/after_close_briefing.md`: 장후 브리핑 프롬프트
 - `docs/prompts/weekly_briefing.md`: 주간 브리핑 프롬프트
 - `docs/prompts/watchlist_briefing.md`: 관심종목 브리핑 프롬프트
+- `docs/prompts/watchlist_event_alert.md`: 관심종목 이벤트 알림 프롬프트
 - `docs/roadmap.md`: 추가 추천 자동화 아이디어
 - `config/watchlist_positions.example.yaml`: 관심종목/보유 포지션 예시 파일
+- `config/slack_channels.example.yaml`: 브리핑 유형별 Slack 채널 매핑 예시 파일
 - `docs/slack_summary_sample_2026-04-26.md`: Slack 발송 샘플
 - `samples/market_briefing_2026-04-26.docx`: 2026-04-26 수동 실행 샘플 산출물
 - `requirements.txt`: 로컬 실행에 필요한 Python 패키지
@@ -23,6 +25,7 @@
 - 장후 브리핑: 당일 수급, 업종, 주도주, 이벤트 리뷰
 - 주간 브리핑: 지난주 리뷰와 이번 주 캘린더, 핵심 시나리오
 - 관심종목 브리핑: 지정 종목·ETF·테마에 대한 공시/실적/이벤트 중심 업데이트
+- 관심종목 이벤트 알림: 보유/관심 종목의 공시, 실적, 급등락 발생 시 짧은 Slack 알림
 
 ## 실행 방식
 
@@ -50,7 +53,7 @@ python3 src/generate_market_briefing.py
 
 ## Slack
 
-기본 설정은 사용자가 지정한 Slack 채널로 요약본을 전송하는 것입니다. 공개 저장소에는 실제 채널명이나 채널 ID를 남기지 말고, 로컬 automation 설정에서만 관리하는 것을 권장합니다.
+브리핑 유형별로 Slack 채널을 분리해 운영하는 것을 기본으로 합니다. 각 automation은 자신의 브리핑 유형에 맞는 채널 키를 선택해야 하며, 실제 채널명과 채널 ID는 로컬 `config/slack_channels.yaml`에서만 관리하는 것을 권장합니다.
 
 ## 추천 운영 방식
 
@@ -58,10 +61,21 @@ python3 src/generate_market_briefing.py
 - 장후 브리핑: 평일 오후 4시 30분 KST
 - 주간 브리핑: 매주 월요일 오전 7시 30분 KST
 - 관심종목 브리핑: 수동 실행 또는 별도 watchlist 조건 기반 자동화
+- 관심종목 이벤트 알림: 장중/장후 수시 실행 또는 조건 기반 자동화
+
+권장 채널 분리 예시는 다음과 같습니다.
+
+- `morning`: 아침 브리핑 전용 채널
+- `after_close`: 장후 브리핑 전용 채널
+- `weekly`: 주간 브리핑 전용 채널
+- `watchlist`: 관심종목 브리핑 전용 채널
+- `watchlist_alert`: 관심종목 이벤트 알림 전용 채널, 없으면 `watchlist` 채널 사용
 
 ## 관심종목 설정
 
 관심종목 브리핑은 로컬 `config/watchlist_positions.yaml` 파일을 읽어 보유 종목, 평균단가, 주수, 메모를 함께 반영할 수 있게 설계합니다. 공개 저장소에는 예시 파일만 두고 실제 보유 수량/평단가는 커밋하지 않는 것을 권장합니다.
+
+Slack 채널도 같은 방식으로 로컬 `config/slack_channels.yaml` 파일을 사용합니다. 저장소에는 `config/slack_channels.example.yaml`만 유지하고 실제 채널 정보는 커밋하지 않는 것을 권장합니다.
 
 ## 주의
 

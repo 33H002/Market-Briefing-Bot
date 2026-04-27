@@ -12,7 +12,7 @@
 ## 산출물
 
 1. 현재 작업 디렉터리에 `.docx` 또는 `.md` 형태의 상세 장후 브리핑을 저장한다. 파일명은 `after_close_briefing_YYYY-MM-DD` 형식으로 한다.
-2. Slack 채널 `<SLACK_CHANNEL_NAME>`에 요약본을 직접 전송한다.
+2. 로컬 `config/slack_channels.yaml`의 `after_close` 채널 설정을 읽어 요약본을 직접 전송한다. 실제 전송에는 `channel_name`과 `channel_id`를 사용한다.
 
 ## 보고서 구성
 

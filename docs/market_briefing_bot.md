@@ -6,6 +6,7 @@
 - 장후 브리핑: 평일 오후 4시 30분 KST
 - 주간 브리핑: 매주 월요일 오전 7시 30분 KST
 - 관심종목 브리핑: 수동 실행 또는 별도 watchlist 기반 자동화
+- 관심종목 이벤트 알림: 장중/장후 수시 실행 또는 별도 조건 기반 자동화
 
 ## 실행 환경
 
@@ -27,8 +28,9 @@
 - 장후 보고서: `after_close_briefing_YYYY-MM-DD.docx` 또는 `.md`
 - 주간 보고서: `weekly_market_briefing_YYYY-MM-DD.docx`
 - 관심종목 보고서: `watchlist_briefing_YYYY-MM-DD.docx`
+- 관심종목 이벤트 알림: Slack 단문 알림
 - 저장 위치: 현재 작업 경로
-- Slack 요약: `<SLACK_CHANNEL_NAME>` 채널
+- Slack 요약 채널: 브리핑 유형별 분리
 
 ## 프롬프트 파일
 
@@ -36,11 +38,22 @@
 - 장후 브리핑: `docs/prompts/after_close_briefing.md`
 - 주간 브리핑: `docs/prompts/weekly_briefing.md`
 - 관심종목 브리핑: `docs/prompts/watchlist_briefing.md`
+- 관심종목 이벤트 알림: `docs/prompts/watchlist_event_alert.md`
 
 ## 로컬 설정 파일
 
 - 관심종목/보유 포지션: `config/watchlist_positions.yaml`
 - 공개용 예시: `config/watchlist_positions.example.yaml`
+- Slack 채널 매핑: `config/slack_channels.yaml`
+- 공개용 예시: `config/slack_channels.example.yaml`
+
+## Slack 채널 키
+
+- `morning`: 아침 브리핑
+- `after_close`: 장후 브리핑
+- `weekly`: 주간 브리핑
+- `watchlist`: 관심종목 브리핑
+- `watchlist_alert`: 관심종목 이벤트 알림, 없으면 `watchlist` 채널 fallback
 
 ## 공통 보고서 구성
 
@@ -61,4 +74,4 @@
 - 한국 및 미국 핵심 이슈 3-5개
 - 오늘 볼 포인트
 - 생성된 보고서 파일명
-- 기본 전송 대상: 로컬 automation 설정의 `<SLACK_CHANNEL_NAME>` / `<SLACK_CHANNEL_ID>`
+- 기본 전송 대상: 브리핑 유형별 로컬 `config/slack_channels.yaml`의 `channel_name` / `channel_id`

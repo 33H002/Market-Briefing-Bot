@@ -16,7 +16,7 @@
 ## 산출물
 
 1. 현재 작업 디렉터리에 `.docx` 상세 보고서를 저장한다. 파일명은 `market_briefing_YYYY-MM-DD.docx` 형식으로 한다.
-2. Slack 채널 `<SLACK_CHANNEL_NAME>`에 요약본을 직접 전송한다. 실제 채널 ID는 로컬 설정의 `<SLACK_CHANNEL_ID>`를 사용한다.
+2. 로컬 `config/slack_channels.yaml`의 `morning` 채널 설정을 읽어 요약본을 직접 전송한다. 실제 전송에는 `channel_name`과 `channel_id`를 사용한다.
 
 ## 보고서 구성
 

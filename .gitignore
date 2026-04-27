@@ -7,3 +7,4 @@ __pycache__/
 ~$*.docx
 market_briefing_*.docx
 config/watchlist_positions.yaml
+config/slack_channels.yaml

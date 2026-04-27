@@ -1,0 +1,28 @@
+# Copy this file to config/slack_channels.yaml and fill in your real Slack channels locally.
+# Do not commit the real file.
+
+channels:
+  morning:
+    channel_name: "#market-morning"
+    channel_id: "C0123456789"
+    purpose: "장 시작 전 아침 브리핑"
+
+  after_close:
+    channel_name: "#market-close"
+    channel_id: "C1123456789"
+    purpose: "한국 장 마감 후 장후 브리핑"
+
+  weekly:
+    channel_name: "#market-weekly"
+    channel_id: "C2123456789"
+    purpose: "주간 브리핑"
+
+  watchlist:
+    channel_name: "#market-watchlist"
+    channel_id: "C3123456789"
+    purpose: "관심종목 브리핑"
+
+  watchlist_alert:
+    channel_name: "#market-watchlist-alert"
+    channel_id: "C4123456789"
+    purpose: "관심종목 이벤트 알림, 없으면 watchlist 채널 사용"
