@@ -12,6 +12,7 @@
 
 - 작업 경로: `<PROJECT_ROOT>`
 - 실행 환경: local
+- Slack 발송: 별도 봇 토큰 기반 로컬 스크립트 권장
 
 ## 리서치 범위
 
@@ -46,6 +47,9 @@
 - 공개용 예시: `config/watchlist_positions.example.yaml`
 - Slack 채널 매핑: `config/slack_channels.yaml`
 - 공개용 예시: `config/slack_channels.example.yaml`
+- Slack 봇 토큰: `config/slack_bot.env`
+- 공개용 예시: `config/slack_bot.example.env`
+- Slack 발송 스크립트: `src/send_slack_message.py`
 
 ## Slack 채널 키
 

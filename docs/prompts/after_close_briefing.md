@@ -12,7 +12,9 @@
 ## 산출물
 
 1. 현재 작업 디렉터리에 `.docx` 또는 `.md` 형태의 상세 장후 브리핑을 저장한다. 파일명은 `after_close_briefing_YYYY-MM-DD` 형식으로 한다.
-2. 로컬 `config/slack_channels.yaml`의 `after_close` 채널 설정을 읽어 요약본을 직접 전송한다. 실제 전송에는 `channel_name`과 `channel_id`를 사용한다.
+2. 로컬 `config/slack_channels.yaml`의 `after_close` 채널 설정을 읽어 요약본을 전송한다.
+3. Slack 발송은 사용자 계정이 아닌 별도 봇 발신 구조를 사용한다. 로컬 `config/slack_bot.env`의 `SLACK_BOT_TOKEN`을 읽고 `python3 src/send_slack_message.py --channel-key after_close --message-file <path>` 형태로 보낸다.
+4. 봇 토큰 또는 채널 설정이 없으면 사용자 계정 발송으로 대체하지 말고, 설정 누락 사실을 결과에 명시하고 종료한다.
 
 ## 보고서 구성
 

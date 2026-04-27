@@ -15,6 +15,8 @@
 - `docs/roadmap.md`: 추가 추천 자동화 아이디어
 - `config/watchlist_positions.example.yaml`: 관심종목/보유 포지션 예시 파일
 - `config/slack_channels.example.yaml`: 브리핑 유형별 Slack 채널 매핑 예시 파일
+- `config/slack_bot.example.env`: Slack 봇 토큰 로컬 설정 예시 파일
+- `src/send_slack_message.py`: Slack 봇 발송 스크립트
 - `docs/slack_summary_sample_2026-04-26.md`: Slack 발송 샘플
 - `samples/market_briefing_2026-04-26.docx`: 2026-04-26 수동 실행 샘플 산출물
 - `requirements.txt`: 로컬 실행에 필요한 Python 패키지
@@ -29,7 +31,7 @@
 
 ## 실행 방식
 
-Codex automation은 브리핑 유형별로 별도 등록해 운영할 수 있습니다. 로컬 Mac이 켜져 있고 Codex/Slack 연결이 유지되어야 합니다.
+Codex automation은 브리핑 유형별로 별도 등록해 운영할 수 있습니다. 로컬 Mac이 켜져 있어야 하며, Slack 발송은 사용자 계정이 아닌 별도 봇 토큰 기반 로컬 스크립트로 처리하는 것을 권장합니다.
 
 수동으로 샘플 보고서를 다시 생성하려면 프로젝트 루트에서 아래 명령을 실행합니다.
 
@@ -53,7 +55,7 @@ python3 src/generate_market_briefing.py
 
 ## Slack
 
-브리핑 유형별로 Slack 채널을 분리해 운영하는 것을 기본으로 합니다. 각 automation은 자신의 브리핑 유형에 맞는 채널 키를 선택해야 하며, 실제 채널명과 채널 ID는 로컬 `config/slack_channels.yaml`에서만 관리하는 것을 권장합니다.
+브리핑 유형별로 Slack 채널을 분리해 운영하는 것을 기본으로 합니다. 각 automation은 자신의 브리핑 유형에 맞는 채널 키를 선택해야 하며, 실제 채널명과 채널 ID는 로컬 `config/slack_channels.yaml`에서만 관리하는 것을 권장합니다. 모바일 푸시를 안정적으로 받으려면 Slack connector의 사용자 계정 발송 대신 `src/send_slack_message.py`와 `SLACK_BOT_TOKEN` 기반 별도 봇 발신 구조를 사용하는 것을 권장합니다.
 
 ## 추천 운영 방식
 
@@ -76,6 +78,12 @@ python3 src/generate_market_briefing.py
 관심종목 브리핑은 로컬 `config/watchlist_positions.yaml` 파일을 읽어 보유 종목, 평균단가, 주수, 메모를 함께 반영할 수 있게 설계합니다. 공개 저장소에는 예시 파일만 두고 실제 보유 수량/평단가는 커밋하지 않는 것을 권장합니다.
 
 Slack 채널도 같은 방식으로 로컬 `config/slack_channels.yaml` 파일을 사용합니다. 저장소에는 `config/slack_channels.example.yaml`만 유지하고 실제 채널 정보는 커밋하지 않는 것을 권장합니다.
+
+Slack 봇 토큰은 로컬 `config/slack_bot.env` 파일에 넣어 관리합니다. 저장소에는 `config/slack_bot.example.env`만 유지하고 실제 토큰은 커밋하지 않는 것을 권장합니다.
+
+봇 발신 구조를 쓰려면 Slack 앱에서 최소 `chat:write` 권한이 필요합니다. 봇이 아직 채널 멤버가 아니면 채널에 초대해야 하고, 새 앱이 모든 공개 채널에 자동으로 쓰는 것은 기본 동작이 아닙니다. 참고:
+- [chat.postMessage](https://api.slack.com/methods/chat.postMessage)
+- [chat:write scope](https://api.slack.com/scopes/chat%3Awrite)
 
 ## 주의
 

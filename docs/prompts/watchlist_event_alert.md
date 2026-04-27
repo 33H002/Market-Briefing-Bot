@@ -34,9 +34,11 @@
 ## 산출물
 
 1. 별도 `.docx` 보고서는 만들지 않는다.
-2. 로컬 `config/slack_channels.yaml`에서 `watchlist_alert` 채널이 있으면 그 설정을 사용해 Slack 알림을 직접 전송한다.
+2. 로컬 `config/slack_channels.yaml`에서 `watchlist_alert` 채널이 있으면 그 설정을 사용해 Slack 알림을 전송한다.
 3. `watchlist_alert` 채널이 없으면 `watchlist` 채널 설정을 사용한다.
-4. 메시지는 한국어로 짧고 즉시 판단 가능한 형태로 작성한다. 보통 5-10줄 이내를 목표로 하고, 1500자 안쪽으로 유지한다.
+4. Slack 발송은 사용자 계정이 아닌 별도 봇 발신 구조를 사용한다. 로컬 `config/slack_bot.env`의 `SLACK_BOT_TOKEN`을 읽고 `python3 src/send_slack_message.py --channel-key watchlist_alert --fallback-key watchlist --message-file <path>` 형태로 보낸다.
+5. 메시지는 한국어로 짧고 즉시 판단 가능한 형태로 작성한다. 보통 5-10줄 이내를 목표로 하고, 1500자 안쪽으로 유지한다.
+6. 봇 토큰 또는 채널 설정이 없으면 사용자 계정 발송으로 대체하지 말고, 설정 누락 사실을 결과에 명시하고 종료한다.
 
 ## Slack 메시지 구성
 
